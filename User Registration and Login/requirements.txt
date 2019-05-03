@@ -1,0 +1,16 @@
+appdirs==1.4.3
+django-crispy-forms==1.7.2
+djongo==1.2.32
+  - dataclasses [required: >=0.1, installed: 0.6]
+  - django [required: >=2.0, installed: 2.2]
+    - pytz [required: Any, installed: 2019.1]
+    - sqlparse [required: Any, installed: 0.2.4]
+  - pymongo [required: >=3.2.0, installed: 3.8.0]
+  - sqlparse [required: ==0.2.4, installed: 0.2.4]
+dnspython==1.16.0
+packaging==19.0
+  - pyparsing [required: >=2.0.2, installed: 2.4.0]
+  - six [required: Any, installed: 1.12.0]
+pipdeptree==0.13.2
+  - pip [required: >=6.0.0, installed: 19.0.3]
+setuptools==40.8.0

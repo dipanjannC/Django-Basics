@@ -1,0 +1,103 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+
+    <title>{% block title %}helpX{% endblock%} </title>
+
+    <style>
+        .asteriskField{
+        color:red;
+<!--        display:none;-->
+        }
+
+        form .alert ul li{
+        list-style:none
+        }
+
+        form .alert ul{
+        padding:0;
+        margin:0;
+        }
+    </style>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class='container'>
+        <a class="navbar-brand" href="{% url 'core:home' %}" >helpX</a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+<!--                <li class="nav-item active">-->
+<!--                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'core:secret_page' %}">Secret Page</a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            {% if user.is_authenticated %}
+                <ul class="navbar-nav ">
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
+                           data-toggle="dropdown" href="#" id="navbarDropdown-1" role="button">
+                            {{ user.username }}
+                        </a>
+                        <div aria-labelledby="navbarDropdown-1" class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{% url 'core:password_change' %}">Change Password</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'core:logout' %}">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            {% else %}
+                <form class="form-inline my-2 my-lg-0">
+                    <a href="{% url 'core:login' %}" class='btn btn-outline-secondary mr-3'>Login</a>
+                    <a href="{% url 'core:signup' %}" class="btn btn-primary" >Sign Up</a>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<body>
+<div class='container'>
+    {%block content%}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+    {%endblock%}
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script crossorigin="anonymous"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
